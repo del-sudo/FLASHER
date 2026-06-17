@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blazedoom Portal Engine</title>
+    <title>Blazedoom Workspace System</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
       .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -57,7 +57,7 @@
           <div class="px-5 pt-6 pb-2 text-[10px] font-black tracking-widest text-slate-400 uppercase">Navigation Menu</div>
 
           <nav class="px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)] no-scrollbar">
-            <button id="nav-dashboard" onclick="routeTo('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 bg-slate-50/50 hover:bg-slate-50 transition-all">
+            <button id="nav-dashboard" onclick="routeTo('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all">
               <span class="text-base text-slate-400">⊞</span> Dashboard
             </button>
             <button id="nav-notifications" onclick="routeTo('notifications')" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-all">
@@ -110,77 +110,62 @@
         
         <section id="view-dashboard" class="space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 flex flex-col justify-center min-h-[140px] border-b border-slate-100">
-              <h2 class="text-2xl font-black text-slate-900 tracking-tighter uppercase leading-none">Advance<br><span class="text-blue-600">Transaction</span><br>Generator</h2>
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 flex flex-col justify-center min-h-[120px]">
+              <h2 class="text-xl font-black text-slate-900 tracking-tighter uppercase leading-none">Advance<br><span class="text-blue-600">Transaction</span> Generator</h2>
             </div>
-            <div class="p-5 flex items-start justify-between gap-4">
-              <div class="space-y-1">
-                <h4 class="text-sm font-black text-slate-900 tracking-tight">Transaction Generator</h4>
-                <p class="text-xs text-slate-400 font-medium">Generate transactions like a pro</p>
+            <div class="p-5 flex items-center justify-between">
+              <div>
+                <h4 class="text-xs font-black text-slate-900">Transaction Generator</h4>
+                <p class="text-[11px] text-slate-400">Generate statements and records instantly</p>
               </div>
-              <span class="text-slate-300 text-lg">✉️</span>
-            </div>
-            <div class="px-5 pb-5">
-              <button onclick="routeTo('generic')" class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
+              <button onclick="routeTo('receipts')" class="px-4 h-9 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 transition-colors">Launch Module</button>
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
-            <div class="bg-slate-950 p-6 relative min-h-[150px] flex flex-col justify-end border-b border-slate-900 overflow-hidden">
-              <div class="absolute inset-0 bg-gradient-to-tr from-indigo-950/80 to-slate-950 z-0"></div>
-              <div class="absolute top-4 left-4 text-amber-500 font-bold text-lg z-10">₿</div>
-              <div class="absolute top-4 right-4 text-emerald-500 font-bold text-lg z-10">₮</div>
-              <div class="relative z-10 space-y-1">
-                <h2 class="text-xl font-black text-white tracking-tighter uppercase leading-tight">Direct Wallet<br><span class="text-cyan-400">Funding</span></h2>
-                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Binance • Trust Wallet • OKX • Base Wallet</p>
-              </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div onclick="routeTo('tracking')" class="bg-white border border-slate-200/60 p-4 rounded-2xl cursor-pointer hover:border-blue-500 transition-all space-y-1">
+              <span class="text-lg">📍</span>
+              <h4 class="text-xs font-black text-slate-900">Tracking App</h4>
             </div>
-            <div class="p-5 flex items-start justify-between gap-4">
-              <div class="space-y-1">
-                <h4 class="text-sm font-black text-slate-900 tracking-tight">Direct wallet funding</h4>
-                <p class="text-xs text-slate-400 font-medium">Generate wallet funding flash alerts and notifications</p>
-              </div>
-              <span class="text-slate-300 text-lg">✉️</span>
-            </div>
-            <div class="px-5 pb-5">
-              <button onclick="routeTo('generic')" class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
+            <div onclick="routeTo('flashing')" class="bg-white border border-slate-200/60 p-4 rounded-2xl cursor-pointer hover:border-blue-500 transition-all space-y-1">
+              <span class="text-lg">💼</span>
+              <h4 class="text-xs font-black text-slate-900">Wallet Flasher</h4>
             </div>
           </div>
+        </section>
 
-          <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
-            <div class="bg-slate-100 relative min-h-[160px] overflow-hidden border-b border-slate-100 flex items-center justify-center">
-              <div class="absolute inset-0 bg-slate-50 flex items-center justify-center opacity-60">🚚📦⚙️🌐</div>
-            </div>
-            <div class="p-5 flex items-start justify-between gap-4">
-              <div class="space-y-1">
-                <h4 class="text-sm font-black text-slate-900 tracking-tight">Tracking</h4>
-                <p class="text-xs text-slate-400 font-medium">Get a shipment tracking code and control the location and details yourself</p>
+        <section id="view-notifications" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-4">
+            <h3 class="text-sm font-black text-slate-900">System Live Event Webhooks</h3>
+            <div class="space-y-3">
+              <div class="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between text-xs font-bold">
+                <span>Push Messaging Alerts Pipeline</span>
+                <span class="text-emerald-500">● Active</span>
               </div>
-              <span class="text-slate-300 text-base">🚛</span>
-            </div>
-            <div class="px-5 pb-5">
-              <button onclick="routeTo('tracking')" class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
+              <div class="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between text-xs font-bold">
+                <span>Webhook Dispatches</span>
+                <span class="text-amber-500">○ Listening</span>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 shadow-xs space-y-4">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xs font-black uppercase text-slate-400 tracking-widest">Recent System Activity</h3>
-              <button class="text-xs font-black text-[#5468ff] hover:underline">View All</button>
+        <section id="view-support" class="hidden space-y-4">
+          <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 rounded-3xl space-y-3">
+            <h3 class="text-base font-black">Support Proxy Framework Deployer</h3>
+            <p class="text-xs text-slate-400">Instantiate decentralized live customer support instances instantly across target client servers.</p>
+            <button class="px-4 h-10 bg-white text-slate-950 font-black text-xs rounded-xl shadow-xs">+ Create Portal Instance</button>
+          </div>
+        </section>
+
+        <section id="view-consignment" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
+            <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Consignment Video Automation Framework</h3>
+            <div class="space-y-1">
+              <label class="text-[10px] font-black uppercase text-slate-400">Target Video File / Streaming URI URL</label>
+              <input type="text" placeholder="https://stream.blazedoom.net/v/9381.mp4" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
             </div>
-            
-            <div class="divide-y divide-slate-50">
-              <div class="py-3.5 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 text-sm">💵</div>
-                  <div>
-                    <h5 class="text-xs font-black text-slate-900 tracking-tight">Receipt created - cashapp</h5>
-                    <p class="text-[10px] text-slate-400 font-medium">41 minutes ago</p>
-                  </div>
-                </div>
-                <span class="text-[9px] font-black tracking-wider text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md uppercase">Completed</span>
-              </div>
-            </div>
+            <button class="w-full h-11 bg-slate-900 text-white text-xs font-black rounded-xl hover:bg-black transition-colors">Initialize Automation Engine</button>
           </div>
         </section>
 
@@ -188,66 +173,131 @@
           <div class="pb-1">
             <button onclick="routeTo('create-tracking')" class="px-4 h-11 w-full bg-[#3b41ff] text-white text-xs font-black rounded-xl shadow-md flex items-center justify-center gap-1.5">+ New Tracking</button>
           </div>
-
-          <div class="bg-white border border-slate-200/80 rounded-2xl p-3 flex flex-col gap-2">
-            <div class="grid grid-cols-2 gap-2">
-              <div onclick="openDrawerModal('typeSheet')" class="bg-slate-50 border border-slate-100 rounded-xl px-3 h-10 flex items-center justify-between text-xs font-bold text-slate-700 cursor-pointer">
-                <span id="label-type">All Types</span>
-                <span class="text-slate-400 text-[9px]">▼</span>
-              </div>
-              <div onclick="openDrawerModal('timeSheet')" class="bg-slate-50 border border-slate-100 rounded-xl px-3 h-10 flex items-center justify-between text-xs font-bold text-slate-700 cursor-pointer">
-                <span id="label-time">Any Time</span>
-                <span class="text-slate-400 text-[9px]">▼</span>
-              </div>
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-3 grid grid-cols-2 gap-2">
+            <div onclick="openDrawerModal('typeSheet')" class="bg-slate-50 border border-slate-100 rounded-xl px-3 h-10 flex items-center justify-between text-xs font-bold text-slate-700 cursor-pointer">
+              <span id="label-type">All Types</span><span class="text-slate-400 text-[9px]">▼</span>
+            </div>
+            <div onclick="openDrawerModal('timeSheet')" class="bg-slate-50 border border-slate-100 rounded-xl px-3 h-10 flex items-center justify-between text-xs font-bold text-slate-700 cursor-pointer">
+              <span id="label-time">Any Time</span><span class="text-slate-400 text-[9px]">▼</span>
             </div>
           </div>
-
-          <div class="bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center justify-center text-center min-h-[280px] space-y-3">
-            <div class="w-16 h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-2xl text-slate-300">📦</div>
-            <div class="space-y-1">
-              <h4 class="text-xs font-black text-slate-900 tracking-tight">No shipments found</h4>
-              <p class="text-[11px] text-slate-400 font-medium max-w-[240px] mx-auto leading-relaxed">You haven't initialized any tracked logistics shipments on this profile layout yet.</p>
-            </div>
+          <div class="bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center justify-center text-center min-h-[200px] text-xs font-bold text-slate-400">
+            No active transport tracking pipelines instantiated.
           </div>
         </section>
 
-        <section id="view-create-tracking" class="hidden space-y-5">
+        <section id="view-create-tracking" class="hidden space-y-4">
           <div class="flex items-center gap-2">
-            <button onclick="routeTo('tracking')" class="text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors">← Cancel</button>
-            <h2 class="text-lg font-black text-slate-900 tracking-tight">Create New Shipment</h2>
+            <button onclick="routeTo('tracking')" class="text-xs font-bold text-slate-400 hover:text-slate-600">← Cancel</button>
+            <h2 class="text-sm font-black text-slate-900">Create New Tracking Pipeline</h2>
           </div>
-
-          <form onsubmit="event.preventDefault(); routeTo('tracking');" class="bg-white border border-slate-200/80 rounded-3xl p-5 space-y-4 shadow-xs">
-            <div class="space-y-1">
-              <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Tracking Identification Number</label>
-              <input type="text" placeholder="e.g. BLZD-93821-X" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" required />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="space-y-1">
-                <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Sender Name / Location</label>
-                <input type="text" placeholder="Origin dispatch center" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-              </div>
-              <div class="space-y-1">
-                <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Receiver Name / Destination</label>
-                <input type="text" placeholder="Final delivery address" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-              </div>
-            </div>
-
-            <div class="space-y-1">
-              <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Initial Hub Status Update Description</label>
-              <input type="text" placeholder="e.g. Package arrived at distribution hub" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-            </div>
-
-            <button type="submit" class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl transition-colors shadow-md shadow-blue-500/10">
-              Save and Deploy Route Tracking
-            </button>
+          <form onsubmit="event.preventDefault(); routeTo('tracking');" class="bg-white border border-slate-200 rounded-3xl p-5 space-y-3">
+            <input type="text" placeholder="Tracking Number" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" required />
+            <input type="text" placeholder="Origin Dispatch Hub Location" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            <input type="text" placeholder="Destination Target Address" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            <button type="submit" class="w-full h-11 bg-blue-600 text-white text-xs font-black rounded-xl">Deploy Logistics Node</button>
           </form>
         </section>
 
-        <section id="view-generic" class="hidden">
-          <div class="bg-white border border-slate-100 rounded-3xl p-12 text-center text-xs font-bold text-slate-400">
-            Module Configurator View Dashboard Container Ready.
+        <section id="view-mailer" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
+            <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Bulk SMTP Server Mailer</h3>
+            <input type="text" placeholder="Recipient Email Address" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            <input type="text" placeholder="Subject Header Mapping" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            <textarea placeholder="HTML or Plain-text message body copy payload..." class="w-full min-h-[100px] p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all"></textarea>
+            <button class="w-full h-11 bg-blue-600 text-white text-xs font-black rounded-xl">Execute Mail Dispatch Broadcast</button>
+          </div>
+        </section>
+
+        <section id="view-marketplace" class="hidden space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="bg-white border border-slate-200/60 p-4 rounded-2xl flex justify-between items-center">
+              <div>
+                <h4 class="text-xs font-black text-slate-900">Custom Domain Binding Addon</h4>
+                <p class="text-[10px] text-slate-400">Bind top-level domain names straight into routers</p>
+              </div>
+              <span class="text-xs font-black text-blue-600">$15/mo</span>
+            </div>
+            <div class="bg-white border border-slate-200/60 p-4 rounded-2xl flex justify-between items-center">
+              <div>
+                <h4 class="text-xs font-black text-slate-900">High-Priority Express SMTP Bandwidth</h4>
+                <p class="text-[10px] text-slate-400">Clean IP mail loops</p>
+              </div>
+              <span class="text-xs font-black text-blue-600">$45/mo</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-receipts" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
+            <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Advanced Transaction Statements & Receipt Generator</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-[10px] font-black uppercase text-slate-400">Target Core App / Gateway</label>
+                <select class="w-full h-11 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all">
+                  <option>Cash App Gateway</option>
+                  <option>PayPal Ledger Engine</option>
+                  <option>Zelle Network Proxy</option>
+                  <option>Bank of America Wire Statement</option>
+                </select>
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-black uppercase text-slate-400">Transaction Value Amount ($)</label>
+                <input type="text" placeholder="e.g. 2,500.00" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="space-y-1">
+                <label class="text-[10px] font-black uppercase text-slate-400">Sender Tag / Identifier Name</label>
+                <input type="text" placeholder="e.g. Margaret S." class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-black uppercase text-slate-400">Recipient Identifier Name</label>
+                <input type="text" placeholder="e.g. Blazedoom Node" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+              </div>
+            </div>
+
+            <button class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl shadow-xs transition-colors">
+              Compile and Download Verified Invoice/Receipt Statement
+            </button>
+          </div>
+        </section>
+
+        <section id="view-flashing" class="hidden space-y-4">
+          <div class="bg-slate-950 text-white p-5 rounded-3xl space-y-3">
+            <h3 class="text-xs font-black uppercase text-amber-500 tracking-widest">Crypto Wallet Flash Node Simulator</h3>
+            <div class="space-y-2">
+              <input type="text" placeholder="Destination Hash Node Address" class="w-full h-11 px-3.5 bg-white/5 border border-white/10 rounded-xl text-xs font-medium outline-none focus:border-amber-500 transition-all text-white" />
+              <input type="text" placeholder="Flash Amount Value (e.g. 1.25 BTC)" class="w-full h-11 px-3.5 bg-white/5 border border-white/10 rounded-xl text-xs font-medium outline-none focus:border-amber-500 transition-all text-white" />
+            </div>
+            <button class="w-full h-11 bg-amber-500 text-slate-950 font-black text-xs rounded-xl hover:bg-amber-400 transition-colors">Deploy Memory Pool Flash Event</button>
+          </div>
+        </section>
+
+        <section id="view-fund" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-2 text-center">
+            <h3 class="text-sm font-black text-slate-900">Fund Global Balance Ledger</h3>
+            <p class="text-xs text-slate-400 max-w-xs mx-auto">Send deposits to the secure systemic network routing address profile layer below to top up your account workspace tokens instantly.</p>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 font-mono text-[11px] text-slate-700 select-all font-bold">
+              0x71C...382199bBc4A909F
+            </div>
+          </div>
+        </section>
+
+        <section id="view-settings" class="hidden space-y-4">
+          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
+            <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Workspace Profile Preferences</h3>
+            <div class="space-y-1">
+              <label class="text-[10px] font-black uppercase text-slate-400">Registered Corporate Account Name</label>
+              <input type="text" value="Scottsdale Margaret" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-extrabold outline-none" readonly />
+            </div>
+            <div class="space-y-1">
+              <label class="text-[10px] font-black uppercase text-slate-400">Target Endpoint Webhook URI</label>
+              <input type="text" placeholder="https://api.yourdomain.com/v1/webhook" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            </div>
+            <button class="w-full h-11 bg-blue-600 text-white text-xs font-black rounded-xl">Save Changes</button>
           </div>
         </section>
 
@@ -309,46 +359,44 @@
     </div>
 
     <script>
-      // Navigation Routing Engine Controller 
       function routeTo(viewKey) {
         toggleSidebarMenu(false);
 
-        // Hide all major layout panels cleanly
-        document.getElementById('view-dashboard').classList.add('hidden');
-        document.getElementById('view-tracking').classList.add('hidden');
-        document.getElementById('view-create-tracking').classList.add('hidden');
-        document.getElementById('view-generic').classList.add('hidden');
+        // Capture all major layout container blocks dynamically
+        const views = ['dashboard', 'notifications', 'support', 'consignment', 'tracking', 'create-tracking', 'mailer', 'marketplace', 'receipts', 'flashing', 'fund', 'settings'];
+        
+        // Target hiding logic execution loops
+        views.forEach(v => {
+          const block = document.getElementById('view-' + v);
+          if (block) block.classList.add('hidden');
+        });
 
-        // Reset navigation selected item styling highlights
+        // Reset styling configurations across all standard menu navigation components
         const menuIds = ['dashboard', 'notifications', 'support', 'consignment', 'tracking', 'mailer', 'marketplace', 'receipts', 'flashing', 'fund', 'settings'];
         menuIds.forEach(id => {
           const btn = document.getElementById('nav-' + id);
           if(btn) btn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-all";
         });
 
-        // Routing Logic Resolvers
-        if (viewKey === 'dashboard') {
-          document.getElementById('view-dashboard').classList.remove('hidden');
-          document.getElementById('header-title-text').innerText = "Dashboard";
-          document.getElementById('nav-dashboard').className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
-        } else if (viewKey === 'tracking') {
-          document.getElementById('view-tracking').classList.remove('hidden');
-          document.getElementById('header-title-text').innerText = "Tracking Page";
-          document.getElementById('nav-tracking').className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
-        } else if (viewKey === 'create-tracking') {
-          // Open target workspace view screen form safely
-          document.getElementById('view-create-tracking').classList.remove('hidden');
-          document.getElementById('header-title-text').innerText = "Create New Tracking";
+        // Open target view layer layout container block cleanly
+        const activeTargetBlock = document.getElementById('view-' + viewKey);
+        if (activeTargetBlock) {
+          activeTargetBlock.classList.remove('hidden');
+        }
+
+        // Set contextual display text attributes for top header dynamically
+        const headerText = document.getElementById('header-title-text');
+        if (viewKey === 'create-tracking') {
+          headerText.innerText = "Create New Tracking";
         } else {
-          document.getElementById('view-generic').classList.remove('hidden');
-          const titleFormatted = viewKey.charAt(0).toUpperCase() + viewKey.slice(1) + " Module";
-          document.getElementById('header-title-text').innerText = titleFormatted;
-          const selectedBtn = document.getElementById('nav-' + viewKey);
-          if (selectedBtn) selectedBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
+          headerText.innerText = viewKey.charAt(0).toUpperCase() + viewKey.slice(1);
+          const selectedSidebarBtn = document.getElementById('nav-' + viewKey);
+          if (selectedSidebarBtn) {
+            selectedSidebarBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
+          }
         }
       }
 
-      // Sidebar Interaction Handlers
       function toggleSidebarMenu(shouldShow) {
         const sidebar = document.getElementById('mainSidebar');
         const overlay = document.getElementById('uiOverlay');
@@ -361,7 +409,6 @@
         }
       }
 
-      // Selection Bottom Sheet Dialog Handlers
       function openDrawerModal(modalId) {
         document.getElementById(modalId).classList.remove('hidden');
       }
