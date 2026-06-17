@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function App() {
   // Navigation states
-  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'receipts'
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard', 'receipts', or 'tracking'
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -22,15 +22,38 @@ export default function App() {
   });
   const [generatedReceipt, setGeneratedReceipt] = useState(null);
 
-  // Handle Form Submission
+  // Tracking Form Input State
+  const [trackingForm, setTrackingForm] = useState({
+    trackingNumber: 'BLZ-99482-USA',
+    carrier: 'DHL Express',
+    origin: 'New York, NY',
+    destination: 'Los Angeles, CA',
+    status: 'In Transit',
+    eta: '2 Days'
+  });
+  const [generatedTracking, setGeneratedTracking] = useState(null);
+
+  // Handle Receipt Submission
   const handleReceiptSubmit = (e) => {
     e.preventDefault();
     setGeneratedReceipt({ ...receiptForm });
     
-    // Auto-inject a new action log into our dashboard history system feed
     const newLog = {
       id: Date.now(),
       action: `Receipt created - ${receiptForm.merchant.toLowerCase()}`,
+      time: "Just now"
+    };
+    setActivities([newLog, ...activities]);
+  };
+
+  // Handle Tracking Submission
+  const handleTrackingSubmit = (e) => {
+    e.preventDefault();
+    setGeneratedTracking({ ...trackingForm });
+
+    const newLog = {
+      id: Date.now(),
+      action: `Tracking code generated - ${trackingForm.trackingNumber}`,
       time: "Just now"
     };
     setActivities([newLog, ...activities]);
@@ -82,6 +105,7 @@ export default function App() {
             <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-2 mb-2">Navigation Menu</p>
             <button onClick={() => { setCurrentView('dashboard'); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'dashboard' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📊 Dashboard</button>
             <button onClick={() => { setCurrentView('receipts'); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'receipts' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📄 Receipts Generator</button>
+            <button onClick={() => { setCurrentView('tracking'); setIsMobileMenuOpen(false); }} className={`w-full flex items-center gap-3 px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'tracking' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📦 Tracking Page</button>
           </div>
         </aside>
 
@@ -99,23 +123,28 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Active Receipt Module Card Trigger */}
+                {/* Active Receipt Module Card */}
                 <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
                   <div className="space-y-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📄</div>
                     <h3 className="text-sm font-bold text-gray-900">Receipt Generator</h3>
-                    <p className="text-xs text-gray-500 leading-relaxed">Configure user-defined text layouts to simulate records and transactional tracking receipts dynamically.</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">Configure templates to simulate records and transactional tracking receipts dynamically.</p>
                   </div>
                   <button onClick={() => setCurrentView('receipts')} className="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">
                     Open Module ➔
                   </button>
                 </div>
 
-                {/* Locked Structural Placeholders */}
-                <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm opacity-60">
-                  <div className="w-10 h-10 rounded-xl bg-gray-50 text-gray-400 flex items-center justify-center text-xl">📦</div>
-                  <h3 className="text-sm font-bold text-gray-400 mt-3">Tracking Page</h3>
-                  <p className="text-xs text-gray-400 mt-1">Logistics configuration workspace placeholder framework shell.</p>
+                {/* Active Tracking Module Card */}
+                <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📦</div>
+                    <h3 className="text-sm font-bold text-gray-900">Tracking Page</h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">Get a shipment tracking code layout and control the simulated location and details yourself.</p>
+                  </div>
+                  <button onClick={() => setCurrentView('tracking')} className="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">
+                    Open Module ➔
+                  </button>
                 </div>
               </div>
 
@@ -146,52 +175,117 @@ export default function App() {
               <button onClick={() => setCurrentView('dashboard')} className="text-xs font-bold text-blue-600 hover:underline">← Back to Workspace Grid</button>
               <div>
                 <h2 className="text-xl font-black tracking-tight text-gray-900">Receipt Generator Module</h2>
-                <p className="text-xs text-gray-500 mt-0.5">Configure systemic variables inside forms to render real-time template layouts previews.</p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* CONFIGURATION FORM MODULE */}
                 <form onSubmit={handleReceiptSubmit} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
                   <div>
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Select Platform</label>
-                    <select value={receiptForm.merchant} onChange={(e) => setReceiptForm({...receiptForm, merchant: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl focus:ring-2 focus:ring-blue-600 outline-none">
+                    <select value={receiptForm.merchant} onChange={(e) => setReceiptForm({...receiptForm, merchant: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
                       <option value="CashApp">CashApp</option>
                       <option value="PayPal">PayPal</option>
                       <option value="Zelle">Zelle</option>
-                      <option value="Coinbase">Coinbase</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Transaction Value ($)</label>
-                    <input type="number" step="0.01" value={receiptForm.amount} onChange={(e) => setReceiptForm({...receiptForm, amount: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none focus:ring-2 focus:ring-blue-600" required />
+                    <input type="number" step="0.01" value={receiptForm.amount} onChange={(e) => setReceiptForm({...receiptForm, amount: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Reference Code / Transaction ID</label>
-                    <input type="text" value={receiptForm.referenceId} onChange={(e) => setReceiptForm({...receiptForm, referenceId: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none focus:ring-2 focus:ring-blue-600" required />
+                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Reference Code</label>
+                    <input type="text" value={receiptForm.referenceId} onChange={(e) => setReceiptForm({...receiptForm, referenceId: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
                   </div>
-                  <button type="submit" className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl transition-all">Compile Layout Matrix</button>
+                  <button type="submit" className="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Compile Layout Matrix</button>
                 </form>
 
-                {/* TEMPLATE VISUAL PREVIEW TERMINAL VIEWPORT */}
                 <div className="bg-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center min-h-[300px]">
                   {generatedReceipt ? (
                     <div className="w-full max-w-xs bg-white p-5 rounded-xl shadow-md border border-gray-200 font-mono text-[11px] text-gray-700 space-y-4 border-t-4 border-t-blue-600">
-                      <div className="text-center space-y-0.5">
-                        <p className="text-sm font-black text-gray-900 tracking-tight uppercase">{generatedReceipt.merchant}</p>
-                        <p className="text-[9px] text-gray-400">TRANSACTION VOUCHER RECORD</p>
-                      </div>
+                      <p className="text-center text-sm font-black text-gray-900 uppercase">{generatedReceipt.merchant}</p>
                       <div className="border-t border-dashed border-gray-200 pt-3 space-y-2">
                         <div className="flex justify-between"><span>REF HASH:</span><span className="font-bold text-gray-900">{generatedReceipt.referenceId}</span></div>
-                        <div className="flex justify-between"><span>DATE:</span><span className="text-gray-900">{generatedReceipt.date}</span></div>
-                        <div className="flex justify-between"><span>METRIC:</span><span className="font-bold text-green-600 bg-green-50 px-1 rounded">{generatedReceipt.status}</span></div>
+                        <div className="flex justify-between"><span>GRAND TOTAL:</span><span className="font-black text-gray-900">${parseFloat(generatedReceipt.amount).toFixed(2)}</span></div>
                       </div>
-                      <div className="border-t border-dashed border-gray-200 pt-3 flex justify-between items-center">
-                        <span className="font-bold text-gray-900">GRAND TOTAL:</span>
-                        <span className="text-base font-black text-gray-900">${parseFloat(generatedReceipt.amount).toFixed(2)}</span>
+                    </div>
+                  ) : <p className="text-xs text-gray-400">Awaiting compilation inputs.</p>}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* VIEW C: INTERACTIVE TRACKING PAGE SIMULATION SPACE */}
+          {currentView === 'tracking' && (
+            <div className="space-y-6">
+              <button onClick={() => setCurrentView('dashboard')} className="text-xs font-bold text-blue-600 hover:underline">← Back to Workspace Grid</button>
+              <div>
+                <h2 className="text-xl font-black tracking-tight text-gray-900">Tracking Simulation Module</h2>
+                <p className="text-xs text-gray-500 mt-0.5">Mock shipment pathways and generate client-side status flows.</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* TRACKING INITIALIZER FORM */}
+                <form onSubmit={handleTrackingSubmit} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Tracking ID Number</label>
+                    <input type="text" value={trackingForm.trackingNumber} onChange={(e) => setTrackingForm({...trackingForm, trackingNumber: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Origin City</label>
+                      <input type="text" value={trackingForm.origin} onChange={(e) => setTrackingForm({...trackingForm, origin: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Destination City</label>
+                      <input type="text" value={trackingForm.destination} onChange={(e) => setTrackingForm({...trackingForm, destination: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Shipment Route Status</label>
+                    <select value={trackingForm.status} onChange={(e) => setTrackingForm({...trackingForm, status: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
+                      <option value="In Transit">In Transit</option>
+                      <option value="Out for Delivery">Out for Delivery</option>
+                      <option value="Delivered">Delivered</option>
+                      <option value="Delayed">Delayed</option>
+                    </select>
+                  </div>
+                  <button type="submit" className="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Generate Tracking Monitor</button>
+                </form>
+
+                {/* TRACKING LIVE INTERFACE PREVIEW */}
+                <div className="bg-gray-100 rounded-2xl p-4 sm:p-6 border-2 border-dashed border-gray-200 flex flex-col justify-center min-h-[300px]">
+                  {generatedTracking ? (
+                    <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-md w-full space-y-4">
+                      <div className="flex justify-between items-start border-b border-gray-100 pb-3">
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-400 uppercase">Tracking Number</p>
+                          <h4 className="text-sm font-black text-gray-900 font-mono">{generatedTracking.trackingNumber}</h4>
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-wider bg-blue-50 text-blue-600 px-2 py-1 rounded">
+                          {generatedTracking.status}
+                        </span>
+                      </div>
+
+                      {/* Timeline Graphic Layout */}
+                      <div className="space-y-4 relative pl-5 before:content-[''] before:absolute before:left-1.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-100">
+                        <div className="relative">
+                          <span className="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-white shadow-sm" />
+                          <p className="text-xs font-bold text-gray-800">Departed Origin Terminal</p>
+                          <p className="text-[10px] text-gray-400">{generatedTracking.origin}</p>
+                        </div>
+                        <div className="relative">
+                          <span className={`absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full border-2 border-white shadow-sm ${generatedTracking.status === 'Delivered' ? 'bg-blue-600' : 'bg-amber-500 animate-pulse'}`} />
+                          <p className="text-xs font-bold text-gray-800">Current Status Flow: {generatedTracking.status}</p>
+                          <p className="text-[10px] text-gray-400">Route Segment Pipeline Node</p>
+                        </div>
+                        <div className="relative">
+                          <span className={`absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full border-2 border-white shadow-sm ${generatedTracking.status === 'Delivered' ? 'bg-green-600' : 'bg-gray-200'}`} />
+                          <p className="text-xs font-bold text-gray-800">Final Destination Arrival</p>
+                          <p className="text-[10px] text-gray-400">{generatedTracking.destination}</p>
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <p className="text-xs text-gray-400 text-center font-medium">Configure properties on the form and run the compiler matrix to populate layout graphics.</p>
+                    <p className="text-xs text-gray-400 text-center font-medium">Input shipping route parameters to render tracking layout milestones.</p>
                   )}
                 </div>
               </div>
