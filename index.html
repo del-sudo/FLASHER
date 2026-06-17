@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blazedoom Workspace System</title>
+    <!-- Tailwind CSS Script Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
       .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -12,12 +13,14 @@
   </head>
   <body class="bg-[#f8fafc] text-slate-800 antialiased font-sans select-none">
 
+    <!-- Floating Core Communications Trigger Button -->
     <div class="fixed bottom-6 left-6 z-50 shadow-lg shadow-blue-500/20 bg-[#5468ff] hover:bg-blue-600 active:scale-95 text-white w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer transition-all">
       <svg class="w-7 h-7 transform -translate-x-0.5 translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     </div>
 
+    <!-- Master Application Top Header Bar -->
     <header class="h-16 bg-white border-b border-slate-100 fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4">
       <div class="flex items-center gap-3">
         <button onclick="toggleSidebarMenu(true)" class="p-2 rounded-xl hover:bg-slate-50 text-slate-600 transition-colors">
@@ -27,23 +30,29 @@
       </div>
       
       <div class="flex items-center gap-2">
+        <!-- Theme Controller Switch UI element -->
         <button class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
         
+        <!-- Balance Status Bar Layout Component -->
         <div class="bg-slate-50 border border-slate-200/80 rounded-xl pl-1.5 pr-3 h-10 flex items-center gap-2 text-[10px] font-black text-slate-400 tracking-wider">
           <span class="w-7 h-7 bg-[#3b41ff] rounded-lg text-white flex items-center justify-center font-black text-sm shadow-sm">+</span>
           BALANCE <span class="text-slate-900 font-extrabold text-xs tracking-tight ml-0.5">$0.00</span>
         </div>
         
+        <!-- System User Status Profile Badge -->
         <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100/80 text-[#3b41ff] font-black text-xs tracking-wide flex items-center justify-center">SM</div>
       </div>
     </header>
 
+    <!-- Master Shell Layout Structure Matrix -->
     <div class="flex min-h-screen pt-16">
       
+      <!-- COMPLETE SIDEBAR CORE DRAWER FRAME -->
       <aside id="mainSidebar" class="fixed inset-y-0 left-0 pt-0 z-50 w-[280px] bg-white border-r border-slate-100 transform -translate-x-full transition-transform duration-200 flex flex-col justify-between">
         <div>
+          <!-- Core Platform Branding Element Layout -->
           <div class="h-16 flex items-center justify-between px-5 border-b border-slate-50">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 bg-[#2563eb] rounded-xl flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20">⚡</div>
@@ -56,6 +65,7 @@
 
           <div class="px-5 pt-6 pb-2 text-[10px] font-black tracking-widest text-slate-400 uppercase">Navigation Menu</div>
 
+          <!-- All Interactive Routing Links -->
           <nav class="px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)] no-scrollbar">
             <button id="nav-dashboard" onclick="routeTo('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all">
               <span class="text-base text-slate-400">⊞</span> Dashboard
@@ -93,6 +103,7 @@
           </nav>
         </div>
 
+        <!-- Footnote Profiles Card Container Element Block -->
         <div class="p-4 border-t border-slate-100 bg-slate-50/50 flex items-center gap-3">
           <div class="w-11 h-11 rounded-xl bg-blue-500 text-white flex items-center justify-center font-bold shadow-md shadow-blue-500/10">
             <svg class="w-5 h-5 transform -translate-x-0.5 translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
@@ -104,10 +115,13 @@
         </div>
       </aside>
 
+      <!-- App Dim Layer Overlay Backdrop -->
       <div id="uiOverlay" onclick="toggleSidebarMenu(false)" class="hidden fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40"></div>
 
+      <!-- Main Shell Viewport Dashboard Content Frame -->
       <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full overflow-hidden">
         
+        <!-- 1. DASHBOARD VIEW LAYER -->
         <section id="view-dashboard" class="space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
             <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 flex flex-col justify-center min-h-[120px]">
@@ -122,6 +136,7 @@
             </div>
           </div>
 
+          <!-- Quick Action Shortcuts -->
           <div class="grid grid-cols-2 gap-3">
             <div onclick="routeTo('tracking')" class="bg-white border border-slate-200/60 p-4 rounded-2xl cursor-pointer hover:border-blue-500 transition-all space-y-1">
               <span class="text-lg">📍</span>
@@ -134,6 +149,7 @@
           </div>
         </section>
 
+        <!-- 2. NOTIFICATIONS CONFIGURATION VIEW -->
         <section id="view-notifications" class="hidden space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-4">
             <h3 class="text-sm font-black text-slate-900">System Live Event Webhooks</h3>
@@ -150,6 +166,7 @@
           </div>
         </section>
 
+        <!-- 3. DECENTRALIZED PROXIES SUPPORT PORTALS VIEW -->
         <section id="view-support" class="hidden space-y-4">
           <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-6 rounded-3xl space-y-3">
             <h3 class="text-base font-black">Support Proxy Framework Deployer</h3>
@@ -158,6 +175,7 @@
           </div>
         </section>
 
+        <!-- 4. CONSIGNMENT PIPELINE VIDEO DEPLOYER VIEW -->
         <section id="view-consignment" class="hidden space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
             <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Consignment Video Automation Framework</h3>
@@ -169,6 +187,7 @@
           </div>
         </section>
 
+        <!-- 5. TRACKING DISPATCH MANAGER VIEW CONTAINER -->
         <section id="view-tracking" class="hidden space-y-4">
           <div class="pb-1">
             <button onclick="routeTo('create-tracking')" class="px-4 h-11 w-full bg-[#3b41ff] text-white text-xs font-black rounded-xl shadow-md flex items-center justify-center gap-1.5">+ New Tracking</button>
@@ -186,6 +205,7 @@
           </div>
         </section>
 
+        <!-- TRACKING CREATION LAYER FRAME -->
         <section id="view-create-tracking" class="hidden space-y-4">
           <div class="flex items-center gap-2">
             <button onclick="routeTo('tracking')" class="text-xs font-bold text-slate-400 hover:text-slate-600">← Cancel</button>
@@ -199,6 +219,7 @@
           </form>
         </section>
 
+        <!-- 6. LIVE SMTP BULK MAILER DISPATCH MODULE -->
         <section id="view-mailer" class="hidden space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
             <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Bulk SMTP Server Mailer</h3>
@@ -209,6 +230,7 @@
           </div>
         </section>
 
+        <!-- 7. APP MATRIX SYSTEMS MARKETPLACE MODULE -->
         <section id="view-marketplace" class="hidden space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div class="bg-white border border-slate-200/60 p-4 rounded-2xl flex justify-between items-center">
@@ -228,43 +250,279 @@
           </div>
         </section>
 
+
+        <!-- 8. HIGH-FIDELITY RECEIPTS GENERATOR CONTAINER PLATFORM -->
         <section id="view-receipts" class="hidden space-y-4">
-          <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
-            <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Advanced Transaction Statements & Receipt Generator</h3>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="space-y-1">
-                <label class="text-[10px] font-black uppercase text-slate-400">Target Core App / Gateway</label>
-                <select class="w-full h-11 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all">
-                  <option>Cash App Gateway</option>
-                  <option>PayPal Ledger Engine</option>
-                  <option>Zelle Network Proxy</option>
-                  <option>Bank of America Wire Statement</option>
-                </select>
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-black uppercase text-slate-400">Transaction Value Amount ($)</label>
-                <input type="text" placeholder="e.g. 2,500.00" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="space-y-1">
-                <label class="text-[10px] font-black uppercase text-slate-400">Sender Tag / Identifier Name</label>
-                <input type="text" placeholder="e.g. Margaret S." class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-              </div>
-              <div class="space-y-1">
-                <label class="text-[10px] font-black uppercase text-slate-400">Recipient Identifier Name</label>
-                <input type="text" placeholder="e.g. Blazedoom Node" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
-              </div>
-            </div>
-
-            <button class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl shadow-xs transition-colors">
-              Compile and Download Verified Invoice/Receipt Statement
+          
+          <!-- MAIN DIRECTORY GRID CONTAINER VIEW -->
+          <div id="receipts-directory-view" class="space-y-4">
+            <!-- View History Bar component -->
+            <button class="w-full h-12 bg-[#2d31a6] text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-2 shadow-xs hover:bg-indigo-900 transition-colors">
+              <span>🗂️</span> View History <span class="font-normal opacity-80 text-[11px]">- All generated history</span>
             </button>
+
+            <!-- Live Directory Search Component -->
+            <div class="relative">
+              <input type="text" oninput="filterReceiptGrid(this.value)" placeholder="Search wallets..." class="w-full h-12 pl-4 pr-10 bg-white border border-slate-200 rounded-xl text-xs font-medium outline-none focus:border-blue-500 transition-colors shadow-xs" />
+            </div>
+
+            <!-- Grid Directory Selection Matrix -->
+            <div id="receipts-grid-items" class="grid grid-cols-2 gap-3">
+              <!-- Binance Card Module -->
+              <div onclick="openReceiptForm('Binance', '#f3ba2f', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-amber-400 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-50 text-xl font-bold">🔶</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Binance</h4>
+              </div>
+              <!-- Cashapp Card Module -->
+              <div onclick="openReceiptForm('Cashapp', '#00D632', 'cashapp')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-emerald-400 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-50 text-xl font-bold">💲</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Cashapp</h4>
+              </div>
+              <!-- Trust Wallet Card Module -->
+              <div onclick="openReceiptForm('Trust Wallet', '#3a75c4', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-blue-400 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-50 text-xl font-bold">🛡️</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Trust Wallet</h4>
+              </div>
+              <!-- Coinbase Card Module -->
+              <div onclick="openReceiptForm('Coinbase', '#0052ff', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-blue-600 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-50 text-xl font-bold">🔵</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Coinbase</h4>
+              </div>
+              <!-- PayPal Card Module -->
+              <div onclick="openReceiptForm('PayPal', '#003087', 'paypal')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-indigo-800 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-indigo-50 text-xl font-bold">🅿️</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">PayPal</h4>
+              </div>
+              <!-- Bybit Card Module -->
+              <div onclick="openReceiptForm('Bybit', '#ffb11a', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-amber-500 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-stone-900 text-white text-xs font-black tracking-tighter">BYBIT</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Bybit</h4>
+              </div>
+              <!-- Gcash Card Module -->
+              <div onclick="openReceiptForm('Gcash', '#1976d2', 'standard')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-blue-500 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-100 font-black text-blue-700 text-sm">G)</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Gcash</h4>
+              </div>
+              <!-- Bitcoin Card Module -->
+              <div onclick="openReceiptForm('Bitcoin', '#f7931a', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-amber-600 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-orange-50 text-xl font-bold">🪙</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Bitcoin</h4>
+              </div>
+              <!-- OKX Wallet Card Module -->
+              <div onclick="openReceiptForm('OKX Wallet', '#000000', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-black transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-black text-white font-black text-[9px] tracking-widest">OKX</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">OKX Wallet</h4>
+              </div>
+              <!-- Zelle Card Module -->
+              <div onclick="openReceiptForm('Zelle', '#7414CA', 'standard')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-purple-600 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-purple-50 text-xl font-bold">💜</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Zelle</h4>
+              </div>
+              <!-- Venmo Card Module -->
+              <div onclick="openReceiptForm('Venmo', '#008CFF', 'standard')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-blue-400 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-sky-50 font-black text-sky-600 text-lg">V</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Venmo</h4>
+              </div>
+              <!-- Roqqu Card Module -->
+              <div onclick="openReceiptForm('Roqqu', '#8C46FF', 'crypto')" class="receipt-card bg-white border border-slate-200/60 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-2 cursor-pointer hover:border-purple-400 transition-all shadow-xs">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white text-xs font-bold">🚀</div>
+                <h4 class="text-xs font-black text-slate-900 tracking-tight">Roqqu</h4>
+              </div>
+            </div>
           </div>
+
+          <!-- DYNAMIC FORM CONTEXTUAL SUB-VIEW CONTROLLER LAYER -->
+          <div id="receipts-form-view" class="hidden space-y-4">
+            <button onclick="closeReceiptForm()" class="text-xs font-extrabold text-slate-400 hover:text-slate-600 flex items-center gap-1">
+              ← Return to Wallets Index
+            </button>
+            
+            <!-- Context Branding Banner Card Element Block -->
+            <div id="form-branding-banner" class="rounded-2xl p-5 text-white flex flex-col items-center justify-center text-center gap-1 shadow-sm transition-all duration-200">
+              <span id="banner-icon" class="text-2xl">⚡</span>
+              <h3 id="banner-title" class="text-base font-black tracking-tight">Platform Engine</h3>
+              <p class="text-[10px] font-bold tracking-wider opacity-90 uppercase">Receipt Generator</p>
+            </div>
+
+            <!-- Master Processing Input Form Interface Element Module -->
+            <form id="receipt-generator-core-form" onsubmit="event.preventDefault(); alert('Compiling receipt data arrays...');" class="space-y-4">
+              
+              <!-- SECTION A: RECIPIENT INFORMATION MAPPING LAYER -->
+              <div id="form-block-recipient" class="bg-white border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold">👤</div>
+                  <div>
+                    <h4 class="text-xs font-black text-slate-900 tracking-tight">Recipient Information</h4>
+                    <p class="text-[10px] text-slate-400 font-medium">Enter recipient details</p>
+                  </div>
+                </div>
+                <hr class="border-slate-100">
+                
+                <!-- Dynamic Field 1 Container (Swaps between Standard Name and Cashapp Cashtag labels) -->
+                <div class="space-y-1.5">
+                  <label id="label-field-one" class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Recipient Name</label>
+                  <div class="relative">
+                    <span id="addon-field-one" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">👤</span>
+                    <input type="text" id="input-field-one" placeholder="John Doe" class="w-full h-11 pl-9 pr-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" required />
+                  </div>
+                  <p id="hint-field-one" class="text-[10px] text-slate-400 font-medium">Enter the full name of the recipient</p>
+                </div>
+
+                <!-- Email Input Node Interface Group Component -->
+                <div id="input-container-email" class="space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Recipient Email</label>
+                  <div class="relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">@</span>
+                    <input type="email" placeholder="john.doe@email.com" class="w-full h-11 pl-9 pr-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+                  </div>
+                  <p class="text-[10px] text-slate-400 font-medium">Email address associated with account ledger profile</p>
+                </div>
+              </div>
+
+              <!-- SECTION B: TRANSACTION ARRAYS CONFIG ENGINE MODULE -->
+              <div class="bg-white border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-bold">💲</div>
+                  <div>
+                    <h4 class="text-xs font-black text-slate-900 tracking-tight">Transaction Details</h4>
+                    <p id="sublabel-tx-details" class="text-[10px] text-slate-400 font-medium">Enter payment details</p>
+                  </div>
+                </div>
+                <hr class="border-slate-100">
+
+                <!-- Crypto Dropdown selector container module asset -->
+                <div id="input-container-crypto" class="hidden space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Cryptocurrency</label>
+                  <select class="w-full h-11 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold outline-none focus:bg-white focus:border-blue-500 transition-all">
+                    <option>Bitcoin (BTC)</option>
+                    <option>Ethereum (ETH)</option>
+                    <option>Tether (USDT)</option>
+                    <option>Solana (SOL)</option>
+                  </select>
+                </div>
+
+                <!-- Primary Amount input element configuration fields -->
+                <div class="space-y-1.5">
+                  <label id="label-amount-primary" class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Amount ($)</label>
+                  <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">$</span>
+                    <input type="text" placeholder="1000.00" class="w-full h-11 pl-8 pr-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" required />
+                  </div>
+                  <p id="hint-amount-primary" class="text-[10px] text-slate-400 font-medium">Enter amount between $0.01 - $999,999.00</p>
+                </div>
+
+                <!-- Secondary Amount Field UI Component Block -->
+                <div id="input-container-amount-usd" class="hidden space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Amount (USD)</label>
+                  <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">$</span>
+                    <input type="text" placeholder="Auto-calculated..." class="w-full h-11 pl-8 pr-10 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none" disabled />
+                    <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-amber-500 text-xs">⚡</span>
+                  </div>
+                  <p class="text-[10px] text-slate-400 font-medium">Automatically calculated based on current market prices.</p>
+                </div>
+
+                <!-- Address Mapping destination profile field segment asset -->
+                <div id="input-container-address" class="hidden space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Receiver Address</label>
+                  <input type="text" placeholder="Enter destination wallet" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+                </div>
+
+                <!-- Fee Mapping Data Field Asset Layer Component -->
+                <div id="input-container-fee" class="space-y-1.5">
+                  <label id="label-fee" class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Fee ($)</label>
+                  <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-bold">$</span>
+                    <input type="text" id="input-fee-field" placeholder="0.00" class="w-full h-11 pl-8 pr-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+                    <span id="icon-fee-flash" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-amber-500 text-xs">⚡</span>
+                  </div>
+                  <p id="hint-fee" class="text-[10px] text-slate-400 font-medium">Transaction fee amount</p>
+                </div>
+
+                <!-- Transaction status dropdown system panel config layer -->
+                <div id="input-container-status" class="space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Transaction Status</label>
+                  <select class="w-full h-11 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold outline-none focus:bg-white focus:border-blue-500 transition-all">
+                    <option>Select status</option>
+                    <option>Completed / Success</option>
+                    <option>Pending Validation</option>
+                    <option>Failed / Declined</option>
+                  </select>
+                  <p class="text-[10px] text-slate-400 font-medium">Select transaction status</p>
+                </div>
+
+                <!-- Optional Context notes tracking segment block components -->
+                <div id="input-container-note" class="space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Transaction Note</label>
+                  <input type="text" placeholder="Add emojis and personal touches" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+                </div>
+
+                <!-- Transaction Type Standard Input Select mapping component structure -->
+                <div id="input-container-type" class="space-y-1.5">
+                  <label class="text-[10px] font-black uppercase text-slate-400 tracking-wider">Transaction Type</label>
+                  <select class="w-full h-11 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold outline-none focus:bg-white focus:border-blue-500 transition-all">
+                    <option>Select type</option>
+                    <option>Transfer Outbound</option>
+                    <option>Deposit Inbound</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- SECTION C: TRANSACTION DIRECTION MODE CONTROLLER CARD TOGGLES -->
+              <div id="form-block-mode" class="hidden bg-white border border-slate-200/80 rounded-2xl p-5 space-y-4 shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold">🔄</div>
+                  <div>
+                    <h4 class="text-xs font-black text-slate-900 tracking-tight">Transaction Mode</h4>
+                    <p class="text-[10px] text-slate-400 font-medium">Select transaction type</p>
+                  </div>
+                </div>
+                <hr class="border-slate-100">
+                
+                <div class="grid grid-cols-2 gap-3">
+                  <!-- Send Toggle Option Component -->
+                  <div id="mode-btn-send" onclick="setTransactionMode('send')" class="border-2 border-emerald-500 bg-emerald-50/20 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-red-500 text-white flex items-center justify-center text-xs">▲</div>
+                    <span class="text-xs font-black text-emerald-700">Send</span>
+                    <span class="text-[9px] text-slate-400 font-medium">Outgoing payment</span>
+                  </div>
+                  <!-- Receive Toggle Option Component -->
+                  <div id="mode-btn-receive" onclick="setTransactionMode('receive')" class="border border-slate-200 bg-slate-50/40 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xs">▼</div>
+                    <span class="text-xs font-black text-slate-700">Receive</span>
+                    <span class="text-[9px] text-slate-400 font-medium">Incoming payment</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION D: CHRONO CONFIG MATRIX TIMESTAMP MANAGER SWITCH PANEL -->
+              <div class="bg-white border border-slate-200/80 rounded-2xl p-5 flex items-center justify-between shadow-xs">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-lg font-bold">📅</div>
+                  <div>
+                    <h4 class="text-xs font-black text-slate-900 tracking-tight">Custom Date & Time</h4>
+                    <p class="text-[10px] text-slate-400 font-medium">Set a custom timestamp for the receipt</p>
+                  </div>
+                </div>
+                <div>
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" value="" class="sr-only peer" />
+                    <div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Compilation Processing Dispatcher Exec Button Layout Element -->
+              <button type="submit" id="form-submit-btn" class="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl shadow-md transition-colors flex items-center justify-center gap-2">
+                <span>🧾</span> Generate Receipt
+              </button>
+
+            </form>
+          </div>
+
         </section>
 
+        <!-- 9. CRYPTO WALLET FLASHING SIMULATOR DEPLOYER -->
         <section id="view-flashing" class="hidden space-y-4">
           <div class="bg-slate-950 text-white p-5 rounded-3xl space-y-3">
             <h3 class="text-xs font-black uppercase text-amber-500 tracking-widest">Crypto Wallet Flash Node Simulator</h3>
@@ -276,6 +534,7 @@
           </div>
         </section>
 
+        <!-- 10. DIRECT BALANCES DEPOSIT FUNDING VIEW -->
         <section id="view-fund" class="hidden space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-2 text-center">
             <h3 class="text-sm font-black text-slate-900">Fund Global Balance Ledger</h3>
@@ -286,6 +545,7 @@
           </div>
         </section>
 
+        <!-- 11. PROFILE PREFERENCES CONFIG SYSTEM SETTINGS VIEW -->
         <section id="view-settings" class="hidden space-y-4">
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 space-y-3">
             <h3 class="text-xs font-black uppercase text-slate-400 tracking-wider">Workspace Profile Preferences</h3>
@@ -304,6 +564,7 @@
       </main>
     </div>
 
+    <!-- BOTTOM SHEET DRAWERS -->
     <div id="typeSheet" class="hidden fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 backdrop-blur-xs transition-all">
       <div class="w-full max-w-md bg-[#2d2524] rounded-t-[32px] text-slate-200 overflow-hidden shadow-2xl">
         <div class="divide-y divide-neutral-800">
@@ -358,38 +619,39 @@
       </div>
     </div>
 
+    <!-- App Router Runtime Controller Script Logic -->
     <script>
       function routeTo(viewKey) {
         toggleSidebarMenu(false);
 
-        // Capture all major layout container blocks dynamically
         const views = ['dashboard', 'notifications', 'support', 'consignment', 'tracking', 'create-tracking', 'mailer', 'marketplace', 'receipts', 'flashing', 'fund', 'settings'];
         
-        // Target hiding logic execution loops
         views.forEach(v => {
           const block = document.getElementById('view-' + v);
           if (block) block.classList.add('hidden');
         });
 
-        // Reset styling configurations across all standard menu navigation components
         const menuIds = ['dashboard', 'notifications', 'support', 'consignment', 'tracking', 'mailer', 'marketplace', 'receipts', 'flashing', 'fund', 'settings'];
         menuIds.forEach(id => {
           const btn = document.getElementById('nav-' + id);
           if(btn) btn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-all";
         });
 
-        // Open target view layer layout container block cleanly
         const activeTargetBlock = document.getElementById('view-' + viewKey);
         if (activeTargetBlock) {
           activeTargetBlock.classList.remove('hidden');
         }
 
-        // Set contextual display text attributes for top header dynamically
+        // Reset sub-view state if returning back into standard receipts interface router menu
+        if (viewKey === 'receipts') {
+          closeReceiptForm();
+        }
+
         const headerText = document.getElementById('header-title-text');
         if (viewKey === 'create-tracking') {
           headerText.innerText = "Create New Tracking";
         } else {
-          headerText.innerText = viewKey.charAt(0).toUpperCase() + viewKey.slice(1);
+          headerText.innerText = viewKey === 'receipts' ? "Receipts Page" : viewKey.charAt(0).toUpperCase() + viewKey.slice(1);
           const selectedSidebarBtn = document.getElementById('nav-' + viewKey);
           if (selectedSidebarBtn) {
             selectedSidebarBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
@@ -400,12 +662,14 @@
       function toggleSidebarMenu(shouldShow) {
         const sidebar = document.getElementById('mainSidebar');
         const overlay = document.getElementById('uiOverlay');
-        if (shouldShow) {
-          sidebar.classList.remove('-translate-x-full');
-          overlay.classList.remove('hidden');
-        } else {
-          sidebar.classList.add('-translate-x-full');
-          overlay.classList.add('hidden');
+        if (sidebar && overlay) {
+          if (shouldShow) {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+          } else {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+          }
         }
       }
 
@@ -418,6 +682,132 @@
       function selectContextFilter(groupKey, selectedValue) {
         document.getElementById('label-' + groupKey).innerText = selectedValue;
         closeDrawerModal(groupKey + 'Sheet');
+      }
+
+      /* ----------------------------------------------------
+         RECEIPTS DYNAMIC MATRIX FILTER & INTERFACE ACTIONS
+         ---------------------------------------------------- */
+      function filterReceiptGrid(query) {
+        const cleanQuery = query.toLowerCase().trim();
+        const cards = document.querySelectorAll('.receipt-card');
+        cards.forEach(card => {
+          const title = card.querySelector('h4').innerText.toLowerCase();
+          if (title.includes(cleanQuery)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      }
+
+      function openReceiptForm(platformName, platformColorHex, layoutMode) {
+        // Switch sub-view visible panels inside receipts template block container elements
+        document.getElementById('receipts-directory-view').classList.add('hidden');
+        document.getElementById('receipts-form-view').classList.remove('hidden');
+
+        // Configure Context Branding Banner properties dynamically mapping variables
+        const banner = document.getElementById('form-branding-banner');
+        banner.style.backgroundColor = platformColorHex;
+        document.getElementById('banner-title').innerText = platformName;
+
+        // Extract and assign specific icons for top display element box tracking modules
+        const iconElement = document.getElementById('banner-icon');
+        if (platformName === 'Cashapp') iconElement.innerText = '💲';
+        else if (platformName === 'PayPal') iconElement.innerText = '🅿️';
+        else if (platformName === 'Trust Wallet') iconElement.innerText = '🛡️';
+        else if (platformName === 'Coinbase') iconElement.innerText = '🔵';
+        else if (platformName === 'Binance') iconElement.innerText = '🔶';
+        else if (platformName === 'Bitcoin') iconElement.innerText = '🪙';
+        else if (platformName === 'Zelle') iconElement.innerText = '💜';
+        else iconElement.innerText = '🧾';
+
+        // Configure submission button styling configuration to map context wrapper
+        const submitBtn = document.getElementById('form-submit-btn');
+        submitBtn.style.backgroundColor = platformColorHex;
+
+        // Reset visibility configurations across all conditional input element items
+        document.getElementById('form-block-recipient').classList.remove('hidden');
+        document.getElementById('input-container-email').classList.remove('hidden');
+        document.getElementById('input-container-crypto').classList.add('hidden');
+        document.getElementById('input-container-amount-usd').classList.add('hidden');
+        document.getElementById('input-container-address').classList.add('hidden');
+        document.getElementById('form-block-mode').classList.add('hidden');
+        document.getElementById('input-container-note').classList.add('hidden');
+        document.getElementById('input-container-type').classList.add('hidden');
+        document.getElementById('input-container-status').classList.remove('hidden');
+        
+        // Reset dynamic text and label fields defaults standard configs
+        document.getElementById('label-field-one').innerText = "Recipient Name";
+        document.getElementById('addon-field-one').innerText = "👤";
+        document.getElementById('input-field-one').placeholder = "John Doe";
+        document.getElementById('hint-field-one').innerText = "Enter the full name of the recipient";
+        
+        document.getElementById('sublabel-tx-details').innerText = "Enter payment details";
+        document.getElementById('label-amount-primary').innerText = "Amount ($)";
+        document.getElementById('hint-amount-primary').innerText = "Enter amount between $0.01 - $999,999.00";
+        
+        document.getElementById('label-fee').innerText = "Fee ($)";
+        document.getElementById('hint-fee').innerText = "Transaction fee amount";
+        document.getElementById('input-fee-field').placeholder = "0.00";
+        document.getElementById('icon-fee-flash').classList.add('hidden');
+
+        // Apply conditional custom properties layout formatting mutations
+        if (layoutMode === 'cashapp') {
+          document.getElementById('label-field-one').innerText = "Cashtag";
+          document.getElementById('addon-field-one').innerText = "💲";
+          document.getElementById('input-field-one').placeholder = "johndoe";
+          document.getElementById('hint-field-one').innerText = "Cash App cashtag without the $ symbol";
+          
+          document.getElementById('sublabel-tx-details').innerText = "Payment information and settings";
+          document.getElementById('label-amount-primary').innerText = "Amount (USD)";
+          document.getElementById('hint-amount-primary').innerText = "No currency symbols, just numbers";
+          
+          document.getElementById('input-container-email').classList.add('hidden');
+          document.getElementById('input-container-note').classList.remove('hidden');
+        } 
+        else if (layoutMode === 'paypal') {
+          document.getElementById('hint-field-one').innerText = "Enter the full name of the recipient";
+          document.getElementById('input-container-note').classList.add('hidden');
+        } 
+        else if (layoutMode === 'crypto') {
+          document.getElementById('form-block-recipient').classList.add('hidden');
+          document.getElementById('input-container-crypto').classList.remove('hidden');
+          document.getElementById('input-container-amount-usd').classList.remove('hidden');
+          document.getElementById('input-container-address').classList.remove('hidden');
+          
+          document.getElementById('sublabel-tx-details').innerText = "Generate " + platformName + " Receipt";
+          document.getElementById('label-amount-primary').innerText = "Amount";
+          document.getElementById('hint-amount-primary').innerText = "Enter crypto token value count";
+          
+          document.getElementById('label-fee').innerText = "Network Fee";
+          document.getElementById('input-fee-field').placeholder = "Auto-calculated...";
+          document.getElementById('hint-fee').innerText = "Automatically calculated based on amount and coin selected.";
+          document.getElementById('icon-fee-flash').classList.remove('hidden');
+          
+          document.getElementById('input-container-status').classList.add('hidden');
+          document.getElementById('form-block-mode').classList.remove('hidden');
+        }
+        else if (layoutMode === 'standard') {
+          // Fallback configuration settings for basic ledger items (Venmo, Zelle, Gcash)
+          document.getElementById('input-container-type').classList.remove('hidden');
+        }
+      }
+
+      function closeReceiptForm() {
+        document.getElementById('receipts-directory-view').classList.remove('hidden');
+        document.getElementById('receipts-form-view').classList.add('hidden');
+      }
+
+      function setTransactionMode(mode) {
+        const sendBtn = document.getElementById('mode-btn-send');
+        const receiveBtn = document.getElementById('mode-btn-receive');
+        if (mode === 'send') {
+          sendBtn.className = "border-2 border-emerald-500 bg-emerald-50/20 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all";
+          receiveBtn.className = "border border-slate-200 bg-slate-50/40 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all";
+        } else {
+          sendBtn.className = "border border-slate-200 bg-slate-50/40 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all";
+          receiveBtn.className = "border-2 border-emerald-500 bg-emerald-50/20 p-4 rounded-2xl cursor-pointer flex flex-col items-center justify-center text-center gap-2 transition-all";
+        }
       }
     </script>
   </body>
