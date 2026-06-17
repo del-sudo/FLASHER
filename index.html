@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blazedoom Portal Engine</title>
-    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
       .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -13,14 +12,12 @@
   </head>
   <body class="bg-[#f8fafc] text-slate-800 antialiased font-sans select-none">
 
-    <!-- Global Persistent Floating Telegram Shortcut -->
     <div class="fixed bottom-6 left-6 z-50 shadow-lg shadow-blue-500/20 bg-[#5468ff] hover:bg-blue-600 active:scale-95 text-white w-14 h-14 rounded-2xl flex items-center justify-center cursor-pointer transition-all">
       <svg class="w-7 h-7 transform -translate-x-0.5 translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
       </svg>
     </div>
 
-    <!-- Master Shell Header Base -->
     <header class="h-16 bg-white border-b border-slate-100 fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4">
       <div class="flex items-center gap-3">
         <button onclick="toggleSidebarMenu(true)" class="p-2 rounded-xl hover:bg-slate-50 text-slate-600 transition-colors">
@@ -30,29 +27,23 @@
       </div>
       
       <div class="flex items-center gap-2">
-        <!-- Theme Toggle Light/Dark -->
         <button class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/60 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-colors">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
         
-        <!-- Live Balance Indicator Plate -->
         <div class="bg-slate-50 border border-slate-200/80 rounded-xl pl-1.5 pr-3 h-10 flex items-center gap-2 text-[10px] font-black text-slate-400 tracking-wider">
           <span class="w-7 h-7 bg-[#3b41ff] rounded-lg text-white flex items-center justify-center font-black text-sm shadow-sm">+</span>
           BALANCE <span class="text-slate-900 font-extrabold text-xs tracking-tight ml-0.5">$0.00</span>
         </div>
         
-        <!-- User Badge Component -->
         <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100/80 text-[#3b41ff] font-black text-xs tracking-wide flex items-center justify-center">SM</div>
       </div>
     </header>
 
-    <!-- App View Matrix Shell Layout -->
     <div class="flex min-h-screen pt-16">
       
-      <!-- COMPREHENSIVE SIDEBAR IMPLEMENTATION (Screenshot_20260617-173248.png) -->
       <aside id="mainSidebar" class="fixed inset-y-0 left-0 pt-0 z-50 w-[280px] bg-white border-r border-slate-100 transform -translate-x-full transition-transform duration-200 flex flex-col justify-between">
         <div>
-          <!-- Sidebar Header Branding -->
           <div class="h-16 flex items-center justify-between px-5 border-b border-slate-50">
             <div class="flex items-center gap-3">
               <div class="w-8 h-8 bg-[#2563eb] rounded-xl flex items-center justify-center text-white font-black text-sm shadow-md shadow-blue-500/20">⚡</div>
@@ -63,10 +54,8 @@
             </button>
           </div>
 
-          <!-- Navigation Subtitle -->
           <div class="px-5 pt-6 pb-2 text-[10px] font-black tracking-widest text-slate-400 uppercase">Navigation Menu</div>
 
-          <!-- 11-Item Navigation Links Layout Stack -->
           <nav class="px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)] no-scrollbar">
             <button id="nav-dashboard" onclick="routeTo('dashboard')" class="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 bg-slate-50/50 hover:bg-slate-50 transition-all">
               <span class="text-base text-slate-400">⊞</span> Dashboard
@@ -104,7 +93,6 @@
           </nav>
         </div>
 
-        <!-- Footnote User Identity Display Card Area -->
         <div class="p-4 border-t border-slate-100 bg-slate-50/50 flex items-center gap-3">
           <div class="w-11 h-11 rounded-xl bg-blue-500 text-white flex items-center justify-center font-bold shadow-md shadow-blue-500/10">
             <svg class="w-5 h-5 transform -translate-x-0.5 translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
@@ -116,16 +104,11 @@
         </div>
       </aside>
 
-      <!-- Core Contextual Screen Dim Background Layer -->
       <div id="uiOverlay" onclick="toggleSidebarMenu(false)" class="hidden fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40"></div>
 
-      <!-- Main Panel Working Layout -->
       <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full overflow-hidden">
         
-        <!-- SECTION VIEW 1: CENTRAL CORE DASHBOARD VIEW (Screenshot_20260617-154423.jpg & Screenshot_20260617-154450.jpg) -->
         <section id="view-dashboard" class="space-y-4">
-          
-          <!-- Card Component Block 1: Advanced Transaction Generator Module -->
           <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
             <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 flex flex-col justify-center min-h-[140px] border-b border-slate-100">
               <h2 class="text-2xl font-black text-slate-900 tracking-tighter uppercase leading-none">Advance<br><span class="text-blue-600">Transaction</span><br>Generator</h2>
@@ -138,15 +121,13 @@
               <span class="text-slate-300 text-lg">✉️</span>
             </div>
             <div class="px-5 pb-5">
-              <button class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
+              <button onclick="routeTo('generic')" class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
             </div>
           </div>
 
-          <!-- Card Component Block 2: Direct Wallet Funding Module -->
           <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
             <div class="bg-slate-950 p-6 relative min-h-[150px] flex flex-col justify-end border-b border-slate-900 overflow-hidden">
               <div class="absolute inset-0 bg-gradient-to-tr from-indigo-950/80 to-slate-950 z-0"></div>
-              <!-- Simulated Graphic Tags Matching Image -->
               <div class="absolute top-4 left-4 text-amber-500 font-bold text-lg z-10">₿</div>
               <div class="absolute top-4 right-4 text-emerald-500 font-bold text-lg z-10">₮</div>
               <div class="relative z-10 space-y-1">
@@ -162,19 +143,13 @@
               <span class="text-slate-300 text-lg">✉️</span>
             </div>
             <div class="px-5 pb-5">
-              <button class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
+              <button onclick="routeTo('generic')" class="text-xs font-black text-[#5468ff] hover:text-blue-700 transition-colors flex items-center gap-1">Open <span class="text-[10px]">➔</span></button>
             </div>
           </div>
 
-          <!-- Card Component Block 3: Logistics Pipeline Tracking Module -->
           <div class="bg-white border border-slate-200/60 rounded-3xl overflow-hidden shadow-xs">
             <div class="bg-slate-100 relative min-h-[160px] overflow-hidden border-b border-slate-100 flex items-center justify-center">
-              <!-- Grid Matrix Vector Artwork Stand-in representing Logistics trucks image -->
               <div class="absolute inset-0 bg-slate-50 flex items-center justify-center opacity-60">🚚📦⚙️🌐</div>
-              <div class="absolute bottom-3 right-3 bg-white/80 backdrop-blur-xs rounded-lg p-2 text-right space-y-0.5">
-                <div class="text-[9px] font-black text-slate-800">30%</div>
-                <div class="text-[9px] font-black text-slate-400">1.5%</div>
-              </div>
             </div>
             <div class="p-5 flex items-start justify-between gap-4">
               <div class="space-y-1">
@@ -188,7 +163,6 @@
             </div>
           </div>
 
-          <!-- RECENT SYSTEM ACTIVITY TIMELINE LOG (Screenshot_20260617-154450.jpg) -->
           <div class="bg-white border border-slate-200/60 rounded-3xl p-5 shadow-xs space-y-4">
             <div class="flex items-center justify-between">
               <h3 class="text-xs font-black uppercase text-slate-400 tracking-widest">Recent System Activity</h3>
@@ -206,28 +180,15 @@
                 </div>
                 <span class="text-[9px] font-black tracking-wider text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md uppercase">Completed</span>
               </div>
-
-              <div class="py-3.5 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 text-sm">💵</div>
-                  <div>
-                    <h5 class="text-xs font-black text-slate-900 tracking-tight">Receipt created - cashapp</h5>
-                    <p class="text-[10px] text-slate-400 font-medium">43 minutes ago</p>
-                  </div>
-                </div>
-                <span class="text-[9px] font-black tracking-wider text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md uppercase">Completed</span>
-              </div>
             </div>
           </div>
         </section>
 
-        <!-- SECTION VIEW 2: LOGISTICS TRACKING CONTROLLER (Screenshot_20260617-173212_2.png) -->
         <section id="view-tracking" class="hidden space-y-4">
           <div class="pb-1">
-            <button onclick="routeTo('dashboard')" class="px-4 h-11 w-full bg-[#3b41ff] text-white text-xs font-black rounded-xl shadow-md flex items-center justify-center gap-1.5">+ New Tracking</button>
+            <button onclick="routeTo('create-tracking')" class="px-4 h-11 w-full bg-[#3b41ff] text-white text-xs font-black rounded-xl shadow-md flex items-center justify-center gap-1.5">+ New Tracking</button>
           </div>
 
-          <!-- Active Filter Selection Action Bar Layout Block -->
           <div class="bg-white border border-slate-200/80 rounded-2xl p-3 flex flex-col gap-2">
             <div class="grid grid-cols-2 gap-2">
               <div onclick="openDrawerModal('typeSheet')" class="bg-slate-50 border border-slate-100 rounded-xl px-3 h-10 flex items-center justify-between text-xs font-bold text-slate-700 cursor-pointer">
@@ -241,29 +202,58 @@
             </div>
           </div>
 
-          <!-- Dynamic Logistics Display Plate Status Frame Grid -->
           <div class="bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center justify-center text-center min-h-[280px] space-y-3">
-            <div class="w-16 h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-2xl text-slate-300">
-              📦
-            </div>
+            <div class="w-16 h-16 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center text-2xl text-slate-300">📦</div>
             <div class="space-y-1">
               <h4 class="text-xs font-black text-slate-900 tracking-tight">No shipments found</h4>
-              <p class="text-[11px] text-slate-400 font-medium max-w-[240px] mx-auto leading-relaxed">You haven't initialized or tracked any logistics shipments on this profile ecosystem layer yet.</p>
+              <p class="text-[11px] text-slate-400 font-medium max-w-[240px] mx-auto leading-relaxed">You haven't initialized any tracked logistics shipments on this profile layout yet.</p>
             </div>
           </div>
         </section>
 
-        <!-- FALLBACK EMPTY SCREEN CONTAINER VIEWS -->
+        <section id="view-create-tracking" class="hidden space-y-5">
+          <div class="flex items-center gap-2">
+            <button onclick="routeTo('tracking')" class="text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors">← Cancel</button>
+            <h2 class="text-lg font-black text-slate-900 tracking-tight">Create New Shipment</h2>
+          </div>
+
+          <form onsubmit="event.preventDefault(); routeTo('tracking');" class="bg-white border border-slate-200/80 rounded-3xl p-5 space-y-4 shadow-xs">
+            <div class="space-y-1">
+              <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Tracking Identification Number</label>
+              <input type="text" placeholder="e.g. BLZD-93821-X" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" required />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Sender Name / Location</label>
+                <input type="text" placeholder="Origin dispatch center" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+              </div>
+              <div class="space-y-1">
+                <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Receiver Name / Destination</label>
+                <input type="text" placeholder="Final delivery address" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-[11px] font-black text-slate-400 uppercase tracking-wider">Initial Hub Status Update Description</label>
+              <input type="text" placeholder="e.g. Package arrived at distribution hub" class="w-full h-11 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium outline-none focus:bg-white focus:border-blue-500 transition-all" />
+            </div>
+
+            <button type="submit" class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl transition-colors shadow-md shadow-blue-500/10">
+              Save and Deploy Route Tracking
+            </button>
+          </form>
+        </section>
+
         <section id="view-generic" class="hidden">
           <div class="bg-white border border-slate-100 rounded-3xl p-12 text-center text-xs font-bold text-slate-400">
-            Module Framework Interface Container Ready
+            Module Configurator View Dashboard Container Ready.
           </div>
         </section>
 
       </main>
     </div>
 
-    <!-- LOWER BOTTOM DRAWER MODAL FRAME A: DYNAMIC ROUTE CLASSIFICATIONS (Screenshot_20260617-173212_2.png) -->
     <div id="typeSheet" class="hidden fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 backdrop-blur-xs transition-all">
       <div class="w-full max-w-md bg-[#2d2524] rounded-t-[32px] text-slate-200 overflow-hidden shadow-2xl">
         <div class="divide-y divide-neutral-800">
@@ -291,7 +281,6 @@
       </div>
     </div>
 
-    <!-- LOWER BOTTOM DRAWER MODAL FRAME B: TEMPORAL MATRIX VALUES (Screenshot_20260617-173222.png) -->
     <div id="timeSheet" class="hidden fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 backdrop-blur-xs transition-all">
       <div class="w-full max-w-md bg-[#2d2524] rounded-t-[32px] text-slate-200 overflow-hidden shadow-2xl">
         <div class="divide-y divide-neutral-800">
@@ -319,26 +308,25 @@
       </div>
     </div>
 
-    <!-- Core Runtime Execution Engine Script -->
     <script>
       // Navigation Routing Engine Controller 
       function routeTo(viewKey) {
-        // Close menus immediately
         toggleSidebarMenu(false);
 
-        // Hide all major wrapper layers safely
+        // Hide all major layout panels cleanly
         document.getElementById('view-dashboard').classList.add('hidden');
         document.getElementById('view-tracking').classList.add('hidden');
+        document.getElementById('view-create-tracking').classList.add('hidden');
         document.getElementById('view-generic').classList.add('hidden');
 
-        // Reset sidebar button UI selection classes
+        // Reset navigation selected item styling highlights
         const menuIds = ['dashboard', 'notifications', 'support', 'consignment', 'tracking', 'mailer', 'marketplace', 'receipts', 'flashing', 'fund', 'settings'];
         menuIds.forEach(id => {
           const btn = document.getElementById('nav-' + id);
           if(btn) btn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-all";
         });
 
-        // Resolve active target display template blocks
+        // Routing Logic Resolvers
         if (viewKey === 'dashboard') {
           document.getElementById('view-dashboard').classList.remove('hidden');
           document.getElementById('header-title-text').innerText = "Dashboard";
@@ -347,17 +335,20 @@
           document.getElementById('view-tracking').classList.remove('hidden');
           document.getElementById('header-title-text').innerText = "Tracking Page";
           document.getElementById('nav-tracking').className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
+        } else if (viewKey === 'create-tracking') {
+          // Open target workspace view screen form safely
+          document.getElementById('view-create-tracking').classList.remove('hidden');
+          document.getElementById('header-title-text').innerText = "Create New Tracking";
         } else {
-          // Dynamic handler structural layer fallback container for unfinished route targets
           document.getElementById('view-generic').classList.remove('hidden');
-          const normalizedTitle = viewKey.charAt(0).toUpperCase() + viewKey.slice(1) + " Page";
-          document.getElementById('header-title-text').innerText = normalizedTitle;
+          const titleFormatted = viewKey.charAt(0).toUpperCase() + viewKey.slice(1) + " Module";
+          document.getElementById('header-title-text').innerText = titleFormatted;
           const selectedBtn = document.getElementById('nav-' + viewKey);
           if (selectedBtn) selectedBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-xs font-bold rounded-xl text-slate-900 bg-slate-100 transition-all";
         }
       }
 
-      // Sidebar Interface State Controllers
+      // Sidebar Interaction Handlers
       function toggleSidebarMenu(shouldShow) {
         const sidebar = document.getElementById('mainSidebar');
         const overlay = document.getElementById('uiOverlay');
