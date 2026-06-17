@@ -7,258 +7,277 @@
     <!-- Tailwind CSS Engine CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
-    <div id="root"></div>
+  <body class="bg-gray-50 text-gray-900 antialiased font-sans">
 
-    <!-- React and Babel production standalone engines -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Master Application Execution Block -->
-    <script type="text/babel">
-      const { useState } = React;
-
-      function App() {
-        const [currentView, setCurrentView] = useState('dashboard');
-        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-        const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-        const [activities, setActivities] = useState([
-          { id: 1, action: "Receipt created - cashapp", time: "41 minutes ago" },
-          { id: 2, action: "Receipt created - cashapp", time: "43 minutes ago" }
-        ]);
-
-        const [receiptForm, setReceiptForm] = useState({
-          merchant: 'CashApp',
-          amount: '150.00',
-          referenceId: 'TXN-7738B21',
-          status: 'COMPLETED',
-          date: new Date().toISOString().split('T')[0]
-        });
-        const [generatedReceipt, setGeneratedReceipt] = useState(null);
-
-        const [trackingForm, setTrackingForm] = useState({
-          trackingNumber: 'BLZ-99482-USA',
-          carrier: 'DHL Express',
-          origin: 'New York, NY',
-          destination: 'Los Angeles, CA',
-          status: 'In Transit',
-          eta: '2 Days'
-        });
-        const [generatedTracking, setGeneratedTracking] = useState(null);
-
-        const handleReceiptSubmit = (e) => {
-          e.preventDefault();
-          setGeneratedReceipt({ ...receiptForm });
-          setActivities([{ id: Date.now(), action: `Receipt created - ${receiptForm.merchant.toLowerCase()}`, time: "Just now" }, ...activities]);
-        };
-
-        const handleTrackingSubmit = (e) => {
-          e.preventDefault();
-          setGeneratedTracking({ ...trackingForm });
-          setActivities([{ id: Date.now(), action: `Tracking code generated - ${trackingForm.trackingNumber}`, time: "Just now" }, ...activities]);
-        };
-
-        return (
-          <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
-            <header className="h-16 bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-4">
-              <div className="flex items-center gap-3">
-                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 rounded-lg hover:bg-gray-100 md:hidden text-xl">☰</button>
-                <span onClick={() => setCurrentView('dashboard')} className="text-xl font-bold tracking-tight cursor-pointer">
-                  ⚡ Blazedoom<span className="text-blue-600">.</span>
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="bg-gray-50 border border-gray-200 rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-semibold text-gray-500">
-                  <span className="w-4 h-4 bg-blue-600 rounded-full text-white flex items-center justify-center text-[10px] font-bold">+</span>
-                  BALANCE <span className="text-gray-900 font-bold">$0.00</span>
-                </div>
-                <div className="relative">
-                  <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center border-2 border-blue-600">SM</button>
-                  {isProfileOpen && (
-                    <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-40">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Logged in as</p>
-                        <p className="text-sm font-bold text-gray-800 truncate">Scottsdale Margaret</p>
-                      </div>
-                      <div className="p-1">
-                        <button className="w-full text-left px-3 py-2 text-xs font-medium rounded-lg hover:bg-gray-50">👤 Profile</button>
-                        <button className="w-full text-left px-3 py-2 text-xs font-medium rounded-lg hover:bg-gray-50">⚙️ Settings</button>
-                        <div className="h-px bg-gray-100 my-1"></div>
-                        <button className="w-full text-left px-3 py-2 text-xs font-bold text-red-600 rounded-lg hover:bg-red-50">🚪 Sign Out</button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </header>
-
-            <div className="flex flex-1 pt-16">
-              <aside className={`fixed inset-y-0 left-0 pt-16 z-20 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 md:translate-x-0 md:static md:pt-4 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                <div className="p-4 space-y-1">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-2 mb-2">Navigation Menu</p>
-                  <button onClick={() => { setCurrentView('dashboard'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'dashboard' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📊 Dashboard</button>
-                  <button onClick={() => { setCurrentView('receipts'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'receipts' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📄 Receipts Generator</button>
-                  <button onClick={() => { setCurrentView('tracking'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-3 py-2 text-xs font-bold rounded-lg ${currentView === 'tracking' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}>📦 Tracking Page</button>
-                </div>
-              </aside>
-
-              {isMobileMenuOpen && <div onClick={() => setIsMobileMenuOpen(false)} className="fixed inset-0 bg-black/30 z-10 md:hidden" />}
-
-              <main className="flex-1 p-4 sm:p-6 md:p-8 max-w-5xl mx-auto w-full space-y-8">
-                {currentView === 'dashboard' && (
-                  <>
-                    <div>
-                      <h1 className="text-xl sm:text-2xl font-black tracking-tight text-gray-900">Workspace Dashboard</h1>
-                      <p className="text-xs text-gray-500 mt-0.5">Select a modular tool space below to launch operations.</p>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
-                        <div className="space-y-3">
-                          <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📄</div>
-                          <h3 className="text-sm font-bold text-gray-900">Receipt Generator</h3>
-                          <p className="text-xs text-gray-500 leading-relaxed">Simulate customized merchant records and transactional tracking receipts dynamically.</p>
-                        </div>
-                        <button onClick={() => setCurrentView('receipts')} className="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">Open Module ➔</button>
-                      </div>
-                      <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
-                        <div className="space-y-3">
-                          <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📦</div>
-                          <h3 className="text-sm font-bold text-gray-900">Tracking Page</h3>
-                          <p className="text-xs text-gray-500 leading-relaxed">Generate mock delivery routes and control real-time checkpoint simulation markers.</p>
-                        </div>
-                        <button onClick={() => setCurrentView('tracking')} className="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">Open Module ➔</button>
-                      </div>
-                    </div>
-                    <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
-                      <h3 className="text-xs font-black text-gray-400 uppercase tracking-wider">Recent System Activity</h3>
-                      <div className="divide-y divide-gray-100">
-                        {activities.map((item) => (
-                          <div key={item.id} className="py-3 flex justify-between items-center text-xs">
-                            <div className="flex items-center gap-3">
-                              <div className="text-base">🧾</div>
-                              <div>
-                                <p className="font-bold text-gray-800">{item.action}</p>
-                                <p className="text-[10px] text-gray-400">{item.time}</p>
-                              </div>
-                            </div>
-                            <span className="font-bold text-green-700 bg-green-50 border border-green-100 px-2.5 py-0.5 rounded-full">COMPLETED</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                )}
-
-                {currentView === 'receipts' && (
-                  <div className="space-y-6">
-                    <button onClick={() => setCurrentView('dashboard')} className="text-xs font-bold text-blue-600 hover:underline">← Back to Dashboard</button>
-                    <h2 className="text-xl font-black text-gray-900">Receipt Generator Module</h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      <form onSubmit={handleReceiptSubmit} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Select Platform</label>
-                          <select value={receiptForm.merchant} onChange={(e) => setReceiptForm({...receiptForm, merchant: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
-                            <option value="CashApp">CashApp</option>
-                            <option value="PayPal">PayPal</option>
-                            <option value="Zelle">Zelle</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Transaction Value ($)</label>
-                          <input type="number" step="0.01" value={receiptForm.amount} onChange={(e) => setReceiptForm({...receiptForm, amount: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Reference Code</label>
-                          <input type="text" value={receiptForm.referenceId} onChange={(e) => setReceiptForm({...receiptForm, referenceId: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
-                        </div>
-                        <button type="submit" className="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Compile Layout</button>
-                      </form>
-                      <div className="bg-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center min-h-[300px]">
-                        {generatedReceipt ? (
-                          <div className="w-full max-w-xs bg-white p-5 rounded-xl shadow-md border border-gray-200 font-mono text-[11px] text-gray-700 space-y-4 border-t-4 border-t-blue-600">
-                            <p className="text-center text-sm font-black text-gray-900 uppercase">{generatedReceipt.merchant}</p>
-                            <div className="border-t border-dashed border-gray-200 pt-3 space-y-2">
-                              <div className="flex justify-between"><span>REF HASH:</span><span className="font-bold text-gray-900">{generatedReceipt.referenceId}</span></div>
-                              <div className="flex justify-between"><span>TOTAL:</span><span className="font-black text-gray-900">${parseFloat(generatedReceipt.amount).toFixed(2)}</span></div>
-                            </div>
-                          </div>
-                        ) : <p className="text-xs text-gray-400">Awaiting runtime input parameters.</p>}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {currentView === 'tracking' && (
-                  <div className="space-y-6">
-                    <button onClick={() => setCurrentView('dashboard')} className="text-xs font-bold text-blue-600 hover:underline">← Back to Dashboard</button>
-                    <h2 className="text-xl font-black text-gray-900">Tracking Simulation Module</h2>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      <form onSubmit={handleTrackingSubmit} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Tracking ID Code</label>
-                          <input type="text" value={trackingForm.trackingNumber} onChange={(e) => setTrackingForm({...trackingForm, trackingNumber: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
-                        </div>
-                        <div className="grid grid-cols-2 gap-3">
-                          <div>
-                            <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Origin</label>
-                            <input type="text" value={trackingForm.origin} onChange={(e) => setTrackingForm({...trackingForm, origin: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
-                          </div>
-                          <div>
-                            <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Destination</label>
-                            <input type="text" value={trackingForm.destination} onChange={(e) => setTrackingForm({...trackingForm, destination: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" required />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Shipment Status</label>
-                          <select value={trackingForm.status} onChange={(e) => setTrackingForm({...trackingForm, status: e.target.value})} className="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
-                            <option value="In Transit">In Transit</option>
-                            <option value="Out for Delivery">Out for Delivery</option>
-                            <option value="Delivered">Delivered</option>
-                          </select>
-                        </div>
-                        <button type="submit" className="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Generate Monitor</button>
-                      </form>
-                      <div className="bg-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-200 flex flex-col justify-center min-h-[300px]">
-                        {generatedTracking ? (
-                          <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-md w-full space-y-4">
-                            <div className="flex justify-between items-start border-b border-gray-100 pb-3">
-                              <div>
-                                <p className="text-[10px] font-bold text-gray-400 uppercase">Tracking ID</p>
-                                <h4 className="text-sm font-black text-gray-900 font-mono">{generatedTracking.trackingNumber}</h4>
-                              </div>
-                              <span className="text-[10px] font-black uppercase bg-blue-50 text-blue-600 px-2 py-1 rounded">{generatedTracking.status}</span>
-                            </div>
-                            <div className="space-y-4 relative pl-5 before:content-[''] before:absolute before:left-1.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-100">
-                              <div className="relative">
-                                <span className="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-white shadow-sm" />
-                                <p className="text-xs font-bold text-gray-800">Origin Route Checked</p>
-                                <p className="text-[10px] text-gray-400">{generatedTracking.origin}</p>
-                              </div>
-                              <div className="relative">
-                                <span className="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-amber-500 border-2 border-white shadow-sm" />
-                                <p className="text-xs font-bold text-gray-800">Current Node: {generatedTracking.status}</p>
-                              </div>
-                              <div className="relative">
-                                <span className="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm" />
-                                <p className="text-xs font-bold text-gray-800">Destination Runway Target</p>
-                                <p className="text-[10px] text-gray-400">{generatedTracking.destination}</p>
-                              </div>
-                            </div>
-                          </div>
-                        ) : <p className="text-xs text-gray-400 text-center">Awaiting mapping metrics parameters.</p>}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </main>
+    <!-- Top Navigation Bar -->
+    <header class="h-16 bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-gray-100 md:hidden text-xl">☰</button>
+        <span onclick="switchView('dashboard')" class="text-xl font-bold tracking-tight cursor-pointer">
+          ⚡ Blazedoom<span class="text-blue-600">.</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="bg-gray-50 border border-gray-200 rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-semibold text-gray-500">
+          <span class="w-4 h-4 bg-blue-600 rounded-full text-white flex items-center justify-center text-[10px] font-bold">+</span>
+          BALANCE <span class="text-gray-900 font-bold">$0.00</span>
+        </div>
+        <div class="relative">
+          <button onclick="toggleProfileDropdown()" class="w-9 h-9 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center border-2 border-blue-600">SM</button>
+          <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-lg py-2 z-40">
+            <div class="px-4 py-2 border-b border-gray-100">
+              <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Logged in as</p>
+              <p class="text-sm font-bold text-gray-800 truncate">Scottsdale Margaret</p>
+            </div>
+            <div class="p-1">
+              <button class="w-full text-left px-3 py-2 text-xs font-medium rounded-lg hover:bg-gray-50">👤 Profile</button>
+              <button class="w-full text-left px-3 py-2 text-xs font-medium rounded-lg hover:bg-gray-50">⚙️ Settings</button>
+              <div class="h-px bg-gray-100 my-1"></div>
+              <button class="w-full text-left px-3 py-2 text-xs font-bold text-red-600 rounded-lg hover:bg-red-50">🚪 Sign Out</button>
             </div>
           </div>
-        );
+        </div>
+      </div>
+    </header>
+
+    <div class="flex flex-1 pt-16">
+      <!-- Sidebar Navigation -->
+      <aside id="sidebar" class="fixed inset-y-0 left-0 pt-16 z-20 w-64 bg-white border-r border-gray-200 transform -translate-x-full transition-transform duration-200 md:translate-x-0 md:static md:pt-4">
+        <div class="p-4 space-y-1">
+          <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-2 mb-2">Navigation Menu</p>
+          <button id="nav-dashboard" onclick="switchView('dashboard')" class="w-full text-left px-3 py-2 text-xs font-bold rounded-lg bg-blue-600 text-white">📊 Dashboard</button>
+          <button id="nav-receipts" onclick="switchView('receipts')" class="w-full text-left px-3 py-2 text-xs font-bold rounded-lg text-gray-600 hover:bg-gray-50">📄 Receipts Generator</button>
+          <button id="nav-tracking" onclick="switchView('tracking')" class="w-full text-left px-3 py-2 text-xs font-bold rounded-lg text-gray-600 hover:bg-gray-50">📦 Tracking Page</button>
+        </div>
+      </aside>
+
+      <!-- Overlay for mobile menu -->
+      <div id="sidebarOverlay" onclick="toggleMobileMenu()" class="hidden fixed inset-0 bg-black/30 z-10 md:hidden"></div>
+
+      <!-- Main Workspace Views -->
+      <main class="flex-1 p-4 sm:p-6 md:p-8 max-w-5xl mx-auto w-full space-y-8">
+        
+        <!-- View 1: Dashboard -->
+        <section id="view-dashboard" class="space-y-8">
+          <div>
+            <h1 class="text-xl sm:text-2xl font-black tracking-tight text-gray-900">Workspace Dashboard</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Select a modular tool space below to launch operations.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📄</div>
+                <h3 class="text-sm font-bold text-gray-900">Receipt Generator</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Simulate customized merchant records and transactional tracking receipts dynamically.</p>
+              </div>
+              <button onclick="switchView('receipts')" class="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">Open Module ➔</button>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">📦</div>
+                <h3 class="text-sm font-bold text-gray-900">Tracking Page</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">Generate mock delivery routes and control real-time checkpoint simulation markers.</p>
+              </div>
+              <button onclick="switchView('tracking')" class="mt-5 w-full py-2 bg-gray-50 hover:bg-blue-600 hover:text-white border border-gray-200 text-gray-700 text-xs font-bold rounded-xl transition-all">Open Module ➔</button>
+            </div>
+          </div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+            <h3 class="text-xs font-black text-gray-400 uppercase tracking-wider">Recent System Activity</h3>
+            <div id="activityLog" class="divide-y divide-gray-100">
+              <!-- Dynamically populated activities -->
+              <div class="py-3 flex justify-between items-center text-xs">
+                <div class="flex items-center gap-3">
+                  <div class="text-base">🧾</div>
+                  <div>
+                    <p class="font-bold text-gray-800">Receipt created - cashapp</p>
+                    <p class="text-[10px] text-gray-400">41 minutes ago</p>
+                  </div>
+                </div>
+                <span class="font-bold text-green-700 bg-green-50 border border-green-100 px-2.5 py-0.5 rounded-full">COMPLETED</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- View 2: Receipts Generator -->
+        <section id="view-receipts" class="hidden space-y-6">
+          <button onclick="switchView('dashboard')" class="text-xs font-bold text-blue-600 hover:underline">← Back to Dashboard</button>
+          <h2 class="text-xl font-black text-gray-900">Receipt Generator Module</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+              <div>
+                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Select Platform</label>
+                <select id="receiptMerchant" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
+                  <option value="CashApp">CashApp</option>
+                  <option value="PayPal">PayPal</option>
+                  <option value="Zelle">Zelle</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Transaction Value ($)</label>
+                <input type="number" id="receiptAmount" value="150.00" step="0.01" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Reference Code</label>
+                <input type="text" id="receiptRef" value="TXN-7738B21" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" />
+              </div>
+              <button onclick="generateReceipt()" class="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Compile Layout</button>
+            </div>
+            <div class="bg-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center min-h-[300px]" id="receiptPreviewContainer">
+              <p class="text-xs text-gray-400">Awaiting runtime input parameters.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- View 3: Tracking Simulator -->
+        <section id="view-tracking" class="hidden space-y-6">
+          <button onclick="switchView('dashboard')" class="text-xs font-bold text-blue-600 hover:underline">← Back to Dashboard</button>
+          <h2 class="text-xl font-black text-gray-900">Tracking Simulation Module</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+              <div>
+                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Tracking ID Code</label>
+                <input type="text" id="trackId" value="BLZ-99482-USA" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" />
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Origin</label>
+                  <input type="text" id="trackOrigin" value="New York, NY" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" />
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Destination</label>
+                  <input type="text" id="trackDest" value="Los Angeles, CA" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Shipment Status</label>
+                <select id="trackStatus" class="w-full p-2.5 bg-gray-50 border border-gray-200 text-xs rounded-xl outline-none">
+                  <option value="In Transit">In Transit</option>
+                  <option value="Out for Delivery">Out for Delivery</option>
+                  <option value="Delivered">Delivered</option>
+                </select>
+              </div>
+              <button onclick="generateTracking()" class="w-full py-2.5 bg-blue-600 text-white font-bold text-xs rounded-xl">Generate Monitor</button>
+            </div>
+            <div class="bg-gray-100 rounded-2xl p-6 border-2 border-dashed border-gray-200 flex flex-col justify-center min-h-[300px]" id="trackingPreviewContainer">
+              <p class="text-xs text-gray-400 text-center">Awaiting mapping metrics parameters.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Application Script Logic Block -->
+    <script>
+      // View Management System
+      function switchView(viewName) {
+        document.getElementById('view-dashboard').classList.add('hidden');
+        document.getElementById('view-receipts').classList.add('hidden');
+        document.getElementById('view-tracking').classList.add('hidden');
+        
+        document.getElementById('view-' + viewName).classList.remove('hidden');
+
+        // Navigation Highlight Updates
+        const tabs = ['dashboard', 'receipts', 'tracking'];
+        tabs.forEach(tab => {
+          const btn = document.getElementById('nav-' + tab);
+          if(tab === viewName) {
+            btn.className = "w-full text-left px-3 py-2 text-xs font-bold rounded-lg bg-blue-600 text-white";
+          } else {
+            btn.className = "w-full text-left px-3 py-2 text-xs font-bold rounded-lg text-gray-600 hover:bg-gray-50";
+          }
+        });
+        closeMobileSidebar();
       }
 
-      ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+      // Dropdown and Sidebar UI States
+      function toggleProfileDropdown() {
+        document.getElementById('profileDropdown').classList.toggle('hidden');
+      }
+      function toggleMobileMenu() {
+        document.getElementById('sidebar').classList.toggle('-translate-x-full');
+        document.getElementById('sidebarOverlay').classList.toggle('hidden');
+      }
+      function closeMobileSidebar() {
+        document.getElementById('sidebar').classList.add('-translate-x-full');
+        document.getElementById('sidebarOverlay').classList.add('hidden');
+      }
+
+      // Activity Tracker Updates
+      function logActivity(message) {
+        const container = document.getElementById('activityLog');
+        const entry = document.createElement('div');
+        entry.className = "py-3 flex justify-between items-center text-xs animate-fade-in";
+        entry.innerHTML = `
+          <div class="flex items-center gap-3">
+            <div class="text-base">⚡</div>
+            <div>
+              <p class="font-bold text-gray-800">${message}</p>
+              <p class="text-[10px] text-gray-400">Just now</p>
+            </div>
+          </div>
+          <span class="font-bold text-green-700 bg-green-50 border border-green-100 px-2.5 py-0.5 rounded-full">COMPLETED</span>
+        `;
+        container.insertBefore(entry, container.firstChild);
+      }
+
+      // Generator Core Function: Receipts
+      function generateReceipt() {
+        const merchant = document.getElementById('receiptMerchant').value;
+        const amount = parseFloat(document.getElementById('receiptAmount').value).toFixed(2);
+        const ref = document.getElementById('receiptRef').value;
+
+        const previewContainer = document.getElementById('receiptPreviewContainer');
+        previewContainer.innerHTML = `
+          <div class="w-full max-w-xs bg-white p-5 rounded-xl shadow-md border border-gray-200 font-mono text-[11px] text-gray-700 space-y-4 border-t-4 border-t-blue-600">
+            <p class="text-center text-sm font-black text-gray-900 uppercase">${merchant}</p>
+            <div class="border-t border-dashed border-gray-200 pt-3 space-y-2">
+              <div class="flex justify-between"><span>REF HASH:</span><span class="font-bold text-gray-900">${ref}</span></div>
+              <div class="flex justify-between"><span>TOTAL:</span><span class="font-black text-gray-900">$${amount}</span></div>
+            </div>
+          </div>
+        `;
+        logActivity(`Receipt created - ${merchant.toLowerCase()}`);
+      }
+
+      // Generator Core Function: Tracking
+      function generateTracking() {
+        const trackId = document.getElementById('trackId').value;
+        const origin = document.getElementById('trackOrigin').value;
+        const dest = document.getElementById('trackDest').value;
+        const status = document.getElementById('trackStatus').value;
+
+        const previewContainer = document.getElementById('trackingPreviewContainer');
+        previewContainer.innerHTML = `
+          <div class="bg-white border border-gray-200 rounded-xl p-5 shadow-md w-full space-y-4">
+            <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+              <div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase">Tracking ID</p>
+                <h4 class="text-sm font-black text-gray-900 font-mono">${trackId}</h4>
+              </div>
+              <span class="text-[10px] font-black uppercase bg-blue-50 text-blue-600 px-2 py-1 rounded">${status}</span>
+            </div>
+            <div class="space-y-4 relative pl-5 before:content-[''] before:absolute before:left-1.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-100">
+              <div class="relative">
+                <span class="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-white shadow-sm"></span>
+                <p class="text-xs font-bold text-gray-800">Origin Route Checked</p>
+                <p class="text-[10px] text-gray-400">${origin}</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-amber-500 border-2 border-white shadow-sm"></span>
+                <p class="text-xs font-bold text-gray-800">Current Node: ${status}</p>
+              </div>
+              <div class="relative">
+                <span class="absolute -left-5 top-0.5 w-3.5 h-3.5 rounded-full bg-gray-200 border-2 border-white shadow-sm"></span>
+                <p class="text-xs font-bold text-gray-800">Destination Runway Target</p>
+                <p class="text-[10px] text-gray-400">${dest}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        logActivity(`Tracking generated - ${trackId}`);
+      }
     </script>
   </body>
 </html>
